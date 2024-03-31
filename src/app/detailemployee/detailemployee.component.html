@@ -1,0 +1,36 @@
+<div class="container" style="display: flex;flex-direction: column;">
+  <h2 style="font-family: 'Raleway', sans-serif !important;font-weight: bold;">Employee Detail</h2>
+  <div class="card">
+    <div class="card-header">
+      <div class="profile-info">
+        <img class="profile-picture" src="https://res.cloudinary.com/dhtipb6sd/image/upload/v1686811687/samples/people/smiling-man.jpg" alt="Profile Picture">
+        <span style="font-weight: bold;font-family: 'Raleway', sans-serif !important;">{{ employee.username }}</span>
+      </div>
+      
+    </div>
+    <div class="card-body">
+      <div *ngIf="employee">
+        <div class="detail">
+          <p><strong>Username:</strong> <span>{{ employee.username }}</span></p>
+         
+          <p><strong>First Name:</strong> <span>{{ employee.firstName }}</span></p>
+          <p><strong>Last Name:</strong> <span>{{ employee.lastName }}</span></p>
+          <p><strong>Email:</strong> <span>{{ employee.email }}</span></p>
+          <p><strong>Birth Date:</strong> <span>{{ employee.birthDate }}</span></p>
+          <p><strong>Basic Salary:</strong> <span>{{ employee.basicSalary| formatSalary  }}</span></p>
+          <p><strong>Status:</strong> <span>{{ employee.status }}</span></p>
+          <p><strong>Group:</strong> <span>{{ employee.group }}</span></p>
+          <p><strong>Description:</strong> <span>{{ employee.description }}</span></p>
+        </div>
+      </div>
+      
+      <div *ngIf="employee===null||employee===undefined||employee===''">
+        <p>Employee not found.</p>
+      </div>
+   
+    </div>
+    <div class="modal-footer" style="padding-right: 30px;width: 100%;display: flex;justify-content: end;padding-bottom: 20px;">
+      <button routerLink="/home" style="width: 80px;" type="button" class="btn btn-primary">OK</button>
+    </div>
+  </div>
+</div>

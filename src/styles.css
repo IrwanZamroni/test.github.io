@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
+
+body{
+    margin: 0;
+
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/Raleway/static/Raleway-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

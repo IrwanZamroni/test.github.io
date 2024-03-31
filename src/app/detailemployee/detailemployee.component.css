@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .card {
+    width: 800px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+  }
+  
+  .profile-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Membuat foto profil menjadi lingkaran */
+    margin-right: 12px; /* Jarak antara foto profil dan nama pengguna */
+  }
+  
+  /* span {
+    font-weight: bold;
+  } */
+  .card-header {
+    background-color: #f0f0f0;
+    padding: 16px;
+  }
+  
+  .card-body {
+    padding: 16px;
+  }
+  
+  .detail p {
+    margin: 8px 0;
+  }
+  
+  .detail p strong {
+    width: 120px;
+    display: inline-block;
+  }
+  
+  .detail p span {
+    display: inline-block;
+    text-align: center; 
+  }
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 15px;
+    }
+    
+    .card {
+      width: 100%; 
+    }
+  }
+  
+  

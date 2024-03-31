@@ -1,0 +1,60 @@
+<div class="layar">
+  <mat-toolbar color="primary" *ngIf="!isRootRoute()" style="overflow-y: auto;">
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+   
+      <div>
+        <span style="font-family: 'Raleway', sans-serif !important;font-weight: bold;">Employee Management</span>
+      </div>
+ 
+      <div>
+        <div style="display: flex;gap:10px">
+      
+               
+          <div class="dropd" >
+
+            <button mat-button [matMenuTriggerFor]="menus">
+              <mat-icon>keyboard_arrow_down</mat-icon>
+
+             
+            </button>
+          <mat-menu  #menus="matMenu">
+            
+            <button routerLink="/add-employee"  routerLinkActive="active" mat-menu-item>Employee Add</button>
+            <button routerLink="/detail-employee/undefined"  routerLinkActive="active" mat-menu-item>Employee Detail</button>
+            <button routerLink="/home"  routerLinkActive="active" mat-menu-item>Employee List</button>
+          </mat-menu>
+        </div>
+       
+          <div class="respons" >
+            
+            <div style="padding-top: 3px;cursor: pointer;" routerLink="/add-employee"  routerLinkActive="active" class="menu-item" ><p class="menu-list">Employee Add</p></div>
+            <div style="padding-top: 3px;cursor: pointer;" routerLink="/detail-employee/undefined"  routerLinkActive="active" class="menu-item" ><p class="menu-list" >Employee Detail</p></div>
+            <div style="padding-top: 3px;cursor: pointer;" routerLink="/home"  routerLinkActive="active" class="menu-item" ><p class="menu-list">Employee List</p></div>
+          </div>
+          <mat-menu #menu="matMenu">
+              
+            <button (click)="logout()" mat-menu-item>Logout</button>
+          </mat-menu>
+          <div>
+
+          
+          </div>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>account_circle</mat-icon>
+          <span style="font-family: 'Raleway', sans-serif !important;font-weight: bold;">{{ username }}</span> 
+        </button>
+      
+          <div>
+
+            <mat-menu #menu="matMenu">
+              
+              <button (click)="logout()" mat-menu-item>Logout</button>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-toolbar>
+  
+  <router-outlet></router-outlet>
+</div>

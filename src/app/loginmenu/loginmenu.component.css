@@ -1,0 +1,49 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+   
+    width: 500px; /* Batasi lebar maksimum kartu */
+    height: 500px; /* Biarkan tinggi kartu disesuaikan dengan konten */
+    border-radius: 10px;
+    background-color: rgb(231, 230, 230);
+  }
+  @media only screen and (max-width: 600px) {
+    .card {
+        width: 300px; /* Kartu akan mengisi lebar layar penuh pada layar yang lebih kecil */
+        height: 400px; /* Biarkan tinggi kartu disesuaikan dengan konten */
+    }
+}
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+
+  .layar{
+    height: 100vh;
+    background-image: linear-gradient(to right top, #293851, #3e3457, #592b51, #6e213d, #762121) !important; 
+    background-repeat: no-repeat; background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.containers {
+    display: flex;
+    flex-direction: row;
+    gap: 10rem; /* Jarak antar kolom */
+  }
+  
+  .column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1; 
+  }
+  
+  @media (max-width: 768px) {
+    .containers {
+      flex-direction: column; 
+      gap: 5rem;
+      
+    }
+    
+}

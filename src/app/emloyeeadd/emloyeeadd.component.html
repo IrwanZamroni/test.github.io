@@ -1,0 +1,112 @@
+
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-header">
+        <h2 style="font-family: 'Raleway', sans-serif !important; font-weight: bold;">Add Employee</h2>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="employeeForm" (ngSubmit)="addEmployee()">
+          <!-- <div class="mb-3">
+            <label>Username:</label>
+            <input type="text" class="form-control" formControlName="username">
+            <div *ngIf="employeeForm?.get('username')?.invalid && employeeForm?.get('username')?.touched" class="text-danger">
+              Username is required.
+            </div>
+          </div> -->
+  
+          
+            <div class="mb-3">
+              <label>Username:<span style="color: red;">*</span></label>
+              <input type="text" class="form-control" formControlName="username">
+              <div *ngIf="employeeForm?.get('username')?.invalid && employeeForm?.get('username')?.touched" class="text-danger">
+                Username  is required.
+              </div>
+            </div>
+        
+            <div class="mb-3">
+              <label>First Name:<span style="color: red;">*</span></label>
+              <input type="text" class="form-control" formControlName="firstName">
+              <div *ngIf="employeeForm?.get('firstName')?.invalid && employeeForm?.get('firstName')?.touched" class="text-danger">
+                First Name  is required.
+              </div>
+            </div>
+        
+            <div class="mb-3">
+              <label>Last Name:<span style="color: red;">*</span></label>
+              <input type="text" class="form-control" formControlName="lastName">
+              <div *ngIf="employeeForm?.get('lastName')?.invalid && employeeForm?.get('lastName')?.touched" class="text-danger">
+                Last Name  is required.
+              </div>
+            </div>
+        
+            <div class="mb-3">
+              <label>Email:<span style="color: red;">*</span></label>
+              <input type="email" class="form-control" formControlName="email">
+              <div *ngIf="employeeForm?.get('email')?.invalid && employeeForm?.get('email')?.touched" class="text-danger">
+                Invalid email format.
+              </div>
+            </div>
+        
+            <div class="mb-3">
+              <label>Birth Date:<span style="color: red;">*</span></label>
+              <input type="date" class="form-control" formControlName="birthDate">
+              <div *ngIf="employeeForm?.get('birthDate')?.invalid && employeeForm?.get('birthDate')?.touched" class="text-danger">
+                Birth date cannot exceed today's date.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="status" class="form-label">Status:<span style="color: red;">*</span></label>
+              <input type="text" class="form-control" id="status" formControlName="status">
+              <div *ngIf="employeeForm?.get('status')?.invalid && employeeForm?.get('status')?.touched" class="text-danger">
+                status  is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label>Basic Salary:<span style="color: red;">*</span></label>
+              <input type="number" class="form-control" formControlName="basicSalary">
+              <div *ngIf="employeeForm?.get('basicSalary')?.invalid && employeeForm?.get('basicSalary')?.touched" class="text-danger">
+                Basic salary must be a number.
+              </div>
+            </div>
+        
+            <!-- <div class="mb-3">
+              <label>Group:</label>
+              <select class="form-select" formControlName="group">
+                <input type="text" class="form-control"  placeholder="Cari group">
+                <option *ngFor="let group of dummyGroups" [value]="group">{{ group }}</option>
+              </select>
+              <div *ngIf="employeeForm?.get('group')?.invalid && employeeForm?.get('group')?.touched" class="text-danger">
+                group is required.
+              </div>
+            </div> -->
+            <div class="mb-3">
+              <label>Group:<span style="color: red;">*</span></label>
+              <ng-select [items]="dummyGroups" appendTo="body" formControlName="group" placeholder="Select Fruits"></ng-select>
+              <div *ngIf="employeeForm?.get('group')?.invalid && employeeForm?.get('group')?.touched" class="text-danger">
+                group is required.
+              </div>
+            </div>
+           
+           
+            
+            <div class="mb-3">
+              <label for="description" class="form-label">Description:<span style="color: red;">*</span></label>
+              <input type="text" class="form-control" id="description" formControlName="description">
+              <div *ngIf="employeeForm?.get('description')?.invalid && employeeForm?.get('description')?.touched" class="text-danger">
+                description is required.
+              </div>
+            </div>
+            <div style="display: flex;gap: 5px;width: 100%;justify-content: end;padding-top: 10px;">
+
+              <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+              <button type="submit" class="btn btn-primary" [disabled]="!employeeForm.valid">Save</button>
+             </div>
+            
+          </form>
+  
+        
+        
+      </div>
+    </div>
+  </div>
+  

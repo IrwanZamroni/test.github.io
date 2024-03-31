@@ -1,0 +1,56 @@
+
+<div class="layar">
+    <div class="containers">
+      <div class="column">
+        <h4 style="letter-spacing: 6px; font-family: 'Raleway', sans-serif !important; display: flex;justify-content: center;font-size: 50px;font-weight: 800;color: white;">Welcome To Employee <br/><br/> Management</h4>
+      </div>
+      <div class="column">
+     
+        <div class="card">
+
+            <div class="container" style="display: flex;flex-direction: column;">
+              
+        
+                    <div style="padding: 30px;">
+                        
+                        <h4  style=" font-family: 'Raleway', sans-serif !important; display: flex;justify-content: center;font-size: 30px;"><b>Log In</b></h4> 
+                      
+                        
+                        
+                    </div>
+                    <div class="container">
+                        <div class="row" style="height: 20rem;display: flex; align-items: center; ">
+                          <div class="col-md-10 offset-md-1">
+                            <form>
+                                <div class="form-group" style="padding-bottom: 20px;">
+                                  <label for="username">Username:<span style="color: red;">*</span></label>
+                                  <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" #usernameInput="ngModel" required>
+                                  <div *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)" class="text-danger">
+                                    Username is required.
+                                  </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom: 50px;">
+                                  <label for="password">Password:<span style="color: red;">*</span></label>
+                                  <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" #passwordInput="ngModel" required>
+                                  <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="text-danger">
+                                    Password is required.
+                                  </div>
+                                </div>
+                                <div style="display: flex;justify-content: center;">
+                                  <button style="width: 150px !important; " type="button" class="btn btn-primary"
+                                    [disabled]="!usernameInput.valid || !passwordInput.valid"
+                                    (click)="submit()">Login</button>
+                                </div>
+                              </form>
+                              
+                          </div>
+                        </div>
+                      </div>
+                      
+           
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>

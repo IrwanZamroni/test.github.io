@@ -1,0 +1,181 @@
+<div style="display: flex;justify-content: center;align-items:flex-start;height: 100vh;width: 100%;">
+
+  <div class="container mt-4">
+    <div style="display: flex;justify-content: space-between;padding-top: 30px;padding-bottom: 30px;">
+
+      <h2 style="font-family: 'Raleway', sans-serif !important;font-weight: bold;">List Employee</h2>
+      <button class="btn btn-primary mb-4" (click)="goToAddEmployee()">Add Employee</button>
+    </div>
+    <form class="mb-4">
+      <div class="row">
+        <div class="col-md-2">
+          <input type="text" class="form-control mb-2" placeholder="Username" [(ngModel)]="searchUsername" name="searchUsername">
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control mb-2" placeholder="First Name" [(ngModel)]="searchFirstName" name="searchFirstName">
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control mb-2" placeholder="Last Name" [(ngModel)]="searchLastName" name="searchLastName">
+        </div>
+        <div class="col-md-3">
+          <input type="date" class="form-control mb-2" placeholder="Birth Date" [(ngModel)]="searchBirthDate" name="searchBirthDate">
+        </div>
+        <div class="col-md-1">
+
+          <button class="btn btn-primary" (click)="search()">Search</button>
+        </div>
+      </div>
+     
+    </form>
+    <div class="table-container">
+  <table class="table table-striped" style="width: 1330px !important;">
+    <thead>
+      <tr>
+        <th style="background-color: #DF5656; text-align: center;" (click)="sortBy('username')">
+          No
+          
+        </th>
+        <th style="background-color: #DF5656; text-align: center;" (click)="sortBy('username')">
+          Username
+          <button class="badge" [class.badge-primary]="sortAsc" [class.badge-info]="!sortAsc" [disabled]="!sortAsc && sortType !== 'username'">
+            <i  style="color:black" class="bi bi-caret-up-fill" *ngIf="sortAsc"></i>
+            <i  style="color:black" class="bi bi-caret-down-fill" *ngIf="!sortAsc"></i>
+          </button>
+        </th>
+        <th style="background-color: #DF5656; text-align: center;" (click)="sortBy('firstName')">
+          First Name
+          <button class="badge" [class.badge-primary]="sortAsc" [class.badge-info]="!sortAsc" [disabled]="!sortAsc && sortType !== 'firstName'">
+            <i  style="color:black" class="bi bi-caret-up-fill" *ngIf="sortAsc"></i>
+            <i  style="color:black" class="bi bi-caret-down-fill" *ngIf="!sortAsc"></i>
+          </button>
+        </th>
+        <th style="background-color: #DF5656; text-align: center;" (click)="sortBy('lastName')">
+          Last Name
+          <button class="badge" [class.badge-primary]="sortAsc" [class.badge-info]="!sortAsc" [disabled]="!sortAsc && sortType !== 'lastName'">
+            <i  style="color:black" class="bi bi-caret-up-fill" *ngIf="sortAsc"></i>
+            <i  style="color:black" class="bi bi-caret-down-fill" *ngIf="!sortAsc"></i>
+          </button>
+        </th>
+        <th style="background-color: #DF5656; text-align: center;" (click)="sortBy('email')">
+          Email
+          <button class="badge" [class.badge-primary]="sortAsc" [class.badge-info]="!sortAsc" [disabled]="!sortAsc && sortType !== 'email'">
+            <i  style="color:black" class="bi bi-caret-up-fill" *ngIf="sortAsc"></i>
+            <i  style="color:black" class="bi bi-caret-down-fill" *ngIf="!sortAsc"></i>
+          </button>
+        </th>
+        <th style="background-color: #DF5656; text-align: center;" (click)="sortBy('birthDate')">
+          Birth Date
+          <button class="badge" [class.badge-primary]="sortAsc" [class.badge-info]="!sortAsc" [disabled]="!sortAsc && sortType !== 'birthDate'">
+            <i  style="color:black" class="bi bi-caret-up-fill" *ngIf="sortAsc"></i>
+            <i  style="color:black" class="bi bi-caret-down-fill" *ngIf="!sortAsc"></i>
+          </button>
+        </th>
+        <th style="background-color: #DF5656; text-align: center;" (click)="sortBy('basicSalary')">
+          Basic Salary
+          <button class="badge" [class.badge-primary]="sortAsc" [class.badge-info]="!sortAsc" [disabled]="!sortAsc && sortType !== 'basicSalary'">
+            <i  style="color:black" class="bi bi-caret-up-fill" *ngIf="sortAsc"></i>
+            <i  style="color:black" class="bi bi-caret-down-fill" *ngIf="!sortAsc"></i>
+          </button>
+        </th>
+        <th style="background-color: #DF5656; text-align: center;" (click)="sortBy('status')">
+          Status
+          <button class="badge" [class.badge-primary]="sortAsc" [class.badge-info]="!sortAsc" [disabled]="!sortAsc && sortType !== 'status'">
+            <i  style="color:black" class="bi bi-caret-up-fill" *ngIf="sortAsc"></i>
+            <i  style="color:black" class="bi bi-caret-down-fill" *ngIf="!sortAsc"></i>
+          </button>
+        </th>
+        <th style="background-color: #DF5656; text-align: center;" (click)="sortBy('group')">
+          Group
+          <button class="badge" [class.badge-primary]="sortAsc" [class.badge-info]="!sortAsc" [disabled]="!sortAsc && sortType !== 'group'">
+            <i  style="color:black" class="bi bi-caret-up-fill" *ngIf="sortAsc"></i>
+            <i  style="color:black" class="bi bi-caret-down-fill" *ngIf="!sortAsc"></i>
+          </button>
+        </th>
+        
+        <th style="background-color: #DF5656; text-align: center;" (click)="sortBy('description')">
+          Description
+          <button class="badge" [class.badge-primary]="sortAsc" [class.badge-info]="!sortAsc" [disabled]="!sortAsc && sortType !== 'description'">
+            <i style="color:black" class="bi bi-caret-up-fill" *ngIf="sortAsc"></i>
+            <i style="color:black" class="bi bi-caret-down-fill" *ngIf="!sortAsc"></i>
+          </button>
+        </th>
+        
+        <th style="background-color: #DF5656; text-align: center;" >Action
+          
+        </th>
+        <th style="background-color: #DF5656; text-align: center;" >Detail Employee
+          
+        </th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let item of pagedItems;let i = index">
+        <td >{{i+1}}</td>
+        <td>{{ item.username }}</td>
+        <td>{{ item.firstName }}</td>
+        <td>{{ item.lastName }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.birthDate }}</td>
+        <td>{{ item.basicSalary| formatSalary  }}</td>
+        <td>{{ item.status }}</td>
+        <td>{{ item.group }}</td>
+        <td>{{ item.description }}</td>
+        <td>
+        
+          <div style="display: flex;gap:5px;">
+
+            <button (click)="openDialog(item.id,item.username,item.firstName,item.lastName,item.email,item.birthDate,item.basicSalary,item.status,item.group,item.description)" class="btn btn-sm btn-warning" >
+              <i class="bi bi-pencil"></i> 
+            </button>
+            
+           
+            <button (click)="onDelete(item.id)" class="btn btn-sm btn-danger">
+              <i class="bi bi-trash"></i> 
+            </button>
+          </div>
+        </td>
+        <td style="display: flex;justify-content: center;">
+         
+          <button (click)="detailEmploy(item.id)" class="btn btn-sm btn-primary">
+            <i class="bi bi-eye-fill"></i> 
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  <div class="d-flex justify-content-between">
+    <div>
+      <label for="pageSize">Items per page:</label>
+      <select class="form-select" id="pageSize" [(ngModel)]="pageSize" (change)="pageSizeChanged()">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+      </select>
+    </div>
+    <!-- <div>
+      <button class="btn btn-sm btn-primary" [disabled]="currentPage === 1" (click)="prevPage()">Previous</button>
+      <span class="mx-2">Page {{ currentPage }} of {{ totalPages }}</span>
+      <button class="btn btn-sm btn-primary" [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+    </div> -->
+    <div style="display: flex;gap: 4px;">
+      <button style="height: fit-content !important;" class="btn btn-sm btn-primary" [disabled]="currentPage === 1" (click)="goToFirstPage()">First</button>
+      <button style="height: fit-content !important;" class="btn btn-sm btn-primary" [disabled]="currentPage === 1" (click)="prevPage()">Previous</button>
+      <span style="height: fit-content !important;" class="mx-2">Page {{ currentPage }} of {{ totalPages }}</span>
+      <button style="height: fit-content !important;" class="btn btn-sm btn-primary" [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+      <button style="height: fit-content !important;" class="btn btn-sm btn-primary" [disabled]="currentPage === totalPages" (click)="goToLastPage()">Last</button>
+    </div>
+    
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+

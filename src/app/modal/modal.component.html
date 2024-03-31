@@ -1,0 +1,99 @@
+
+<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="display:flex ;justify-content: space-between;padding-left: 90px;padding-right: 90px;padding-top: 70px;">
+     
+        <h4  style=" font-family: 'Raleway', sans-serif !important; display: flex;justify-content: center;font-size: 30px;"><b>Edit Employee</b></h4> 
+        <button type="button" class="btn-close" aria-label="Close" (click)="onClose()"></button>
+      </div>
+      <div class="modal-body"  style="padding-left: 90px;padding-right: 90px;padding-top: 50px; overflow-y: auto;">
+        <form [formGroup]="employeeForm">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username<span style="color: red;">*</span></label>
+            <input type="text" class="form-control" id="username" formControlName="username">
+            <div *ngIf="employeeForm?.get('username')?.invalid && employeeForm?.get('username')?.touched" class="text-danger">
+              Username  is required.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="firstName" class="form-label">First Name:<span style="color: red;">*</span></label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName">
+            <div *ngIf="employeeForm?.get('firstName')?.invalid && employeeForm?.get('firstName')?.touched" class="text-danger">
+              First Name  is required.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name:<span style="color: red;">*</span></label>
+            
+            <div *ngIf="employeeForm?.get('lastName')?.invalid && employeeForm?.get('lastName')?.touched" class="text-danger">
+              Last Name  is required.
+            </div><input type="text" class="form-control" id="lastName" formControlName="lastName">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:<span style="color: red;">*</span></label>
+           
+            <div *ngIf="employeeForm?.get('email')?.invalid && employeeForm?.get('email')?.touched" class="text-danger">
+              Invalid email format.
+            </div> <input type="email" class="form-control" id="email" formControlName="email">
+          </div>
+          <!-- <div class="mb-3">
+            <label for="birthDate" class="form-label">Birth Date:<span style="color: red;">*</span></label>
+           
+            <input type="date" class="form-control" id="birthDate" formControlName="birthDate">
+            <div *ngIf="employeeForm?.get('birthDate')?.invalid && employeeForm?.get('birthDate')?.touched" class="text-danger">
+              Birth date cannot exceed today's date.
+            </div> -->
+          <!-- </div> -->
+          <div class="mb-3">
+            <label>Birth Date:<span style="color: red;">*</span></label>
+            <input type="date" class="form-control" formControlName="birthDate">
+            <div *ngIf="employeeForm?.get('birthDate')?.invalid && employeeForm?.get('birthDate')?.touched" class="text-danger">
+              Birth date cannot exceed today's date.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="basicSalary" class="form-label">Basic Salary:<span style="color: red;">*</span></label>
+            <input type="number" class="form-control" id="basicSalary" formControlName="basicSalary">
+            <div *ngIf="employeeForm?.get('basicSalary')?.invalid && employeeForm?.get('basicSalary')?.touched" class="text-danger">
+              Basic salary must be a number.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="status" class="form-label">Status:<span style="color: red;">*</span></label>
+            <input type="text" class="form-control" id="status" formControlName="status">
+            <div *ngIf="employeeForm?.get('status')?.invalid && employeeForm?.get('status')?.touched" class="text-danger">
+              status  is required.
+            </div>
+          </div>
+          <!-- <div class="mb-3">
+            <label for="group" class="form-label">Group</label>
+            <select class="form-select" id="group" formControlName="group">
+              <option *ngFor="let group of group" [value]="group">{{ group }}</option>
+            </select>
+            <div *ngIf="employeeForm?.get('group')?.invalid && employeeForm?.get('group')?.touched" class="text-danger">
+              group is required.
+            </div>
+          </div> -->
+          <div class="mb-3">
+            <label>Group:<span style="color: red;">*</span></label>
+            <ng-select [items]="group" appendTo="body" formControlName="group" placeholder="Select Fruits"></ng-select>
+            <div *ngIf="employeeForm?.get('group')?.invalid && employeeForm?.get('group')?.touched" class="text-danger">
+              group is required.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description:<span style="color: red;">*</span></label>
+            <input type="text" class="form-control" id="description" formControlName="description">
+            <div *ngIf="employeeForm?.get('description')?.invalid && employeeForm?.get('description')?.touched" class="text-danger">
+              description is required.
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer" style="padding-right: 90px;padding-top: 30px;display: flex;gap: 7px;padding-bottom: 30px;">
+        <button type="button" class="btn btn-secondary" (click)="onClose()">Close</button>
+        <button type="button" class="btn btn-primary" [disabled]="!employeeForm.valid" (click)="save()">Save changes</button>
+      </div>
+    </div>
+  </div>
+  
